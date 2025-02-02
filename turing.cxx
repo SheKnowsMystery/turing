@@ -284,12 +284,12 @@ int main() {
 		auto tape = std::ifstream("tape.txt");
 		if (tape.fail())
 			throw exc::file_error(R"(Failed to open file "tape.txt")");
-
+#ifndef _DEBUG
 		// файл на выход
 		auto out = std::ofstream("out.txt", std::ios::trunc);
 		if (out.fail())
 			throw exc::file_error(R"(Failed to open file "out.txt")");
-
+#endif
 		// инициализируем МТ
 		auto mt = TuringMachine(alphabet, rules, tape);
 
